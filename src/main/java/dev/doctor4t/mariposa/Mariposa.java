@@ -33,8 +33,9 @@ public class Mariposa implements ModInitializer {
     }
 
     private static void initializeWorldgen() {
-        // Weights are kept intentionally low as we add minimal biomes
-        BiomePlacement.addSubOverworld(BiomeKeys.OLD_GROWTH_PINE_TAIGA, MariposaBiomes.REDWOOD_FOREST, CriterionBuilder.valueMin(BiomeParameterTargets.CONTINENTALNESS, 0.5f));
+        // Replace old growth pine taiga with continentalness of >0.5 and taiga with continentalness of >1
+        BiomePlacement.addSubOverworld(BiomeKeys.OLD_GROWTH_PINE_TAIGA, MariposaBiomes.REDWOOD_FOREST, CriterionBuilder.valueMin(BiomeParameterTargets.CONTINENTALNESS, 0.6f));
+        BiomePlacement.addSubOverworld(BiomeKeys.TAIGA, MariposaBiomes.REDWOOD_FOREST, CriterionBuilder.valueMin(BiomeParameterTargets.CONTINENTALNESS, 1.0f));
         BiomePlacement.addSubOverworld(BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA, MariposaBiomes.REDWOOD_FOREST, nearReadwood());
         BiomePlacement.addSubOverworld(BiomeKeys.TAIGA, MariposaBiomes.REDWOOD_FOREST, nearReadwood());
 
@@ -44,7 +45,7 @@ public class Mariposa implements ModInitializer {
 
     private static Criterion nearReadwood() {
         return CriterionBuilder.allOf(
-                CriterionBuilder.valueMin(BiomeParameterTargets.CONTINENTALNESS, 0.5f),
+                CriterionBuilder.valueMin(BiomeParameterTargets.CONTINENTALNESS, 0.6f),
                 CriterionBuilder.neighbor(BiomeKeys.OLD_GROWTH_PINE_TAIGA),
                 CriterionBuilder.NEAR_BORDER
         );
