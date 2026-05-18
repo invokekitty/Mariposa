@@ -24,9 +24,6 @@
 		],
 		"fabric-datagen": [
 			"dev.doctor4t.mariposa.datagen.MariposaDatagen"
-		],
-		"terrablender": [
-			"dev.doctor4t.mariposa.Mariposa"
 		]
 	},
 	"mixins": [
@@ -38,6 +35,6 @@
 		"minecraft": "~1.21.1",
 		"java": ">=21",
 		"fabric-api": "*",
-		"terrablender": "*"
+		"biolith": "*"
 	}
 }
