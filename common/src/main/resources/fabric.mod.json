@@ -28,9 +28,6 @@
 	],
 	"client": [
 	  "dev.doctor4t.mariposa.client.MariposaClient"
-	],
-	"terrablender": [
-	  "dev.doctor4t.mariposa.fabric.common.MariposaTerraBlender"
 	]
   },
   "depends": {
@@ -38,7 +35,7 @@
 	"minecraft": "~26.1",
 	"java": ">=25",
 	"fabric-api": "*",
-	"terrablender": "*"
+	"biolith": "*"
   },
   "custom": {
 	"launchpad:compatible": true

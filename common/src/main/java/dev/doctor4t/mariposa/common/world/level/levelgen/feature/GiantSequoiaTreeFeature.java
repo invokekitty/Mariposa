@@ -31,7 +31,7 @@ public class GiantSequoiaTreeFeature extends Feature<GiantSequoiaTreeConfigurati
 
 		BlockPos origin = context.origin();
 		BlockPos.MutableBlockPos blockPos = origin.atY(level.getMaxY()).mutable();
-		for (int y = 0; y < 500; y++) {
+		for (int y = 0; y < level.getMaxY() - level.getMinY(); y++) {
 			blockPos.setY(blockPos.getY() - 1);
 			Rotation rotation = Rotation.getRandom(random);
 			GiantSequoiaTreeConfiguration config = context.config();

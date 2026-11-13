@@ -48,6 +48,10 @@ repositories {
 		name = "Sintrya"
 		url = "https://maven.sinytra.org"
 	}
+	maven {
+		name = "TerraformersMC"
+		url = "https://maven.gnomecraft.net/releases"
+	}
 }
 
 dependencies {
@@ -56,5 +60,6 @@ dependencies {
 	implementation("org.sinytra.launchpad:launchpad:${launchpad_version}")
 
 	neoForgeAccessTransformers(neoForgeInterfaceInjections(implementation("org.sinytra.forgified-fabric-api:forgified-fabric-api:${forgified_fabric_api_version}")))
-	implementation("com.github.glitchfiend:TerraBlender-neoforge:${terrablender_version}")
+	//implementation("com.github.glitchfiend:TerraBlender-neoforge:${terrablender_version}")
+	implementation("com.terraformersmc:biolith-neoforge:${project.biolith_version}")
 }

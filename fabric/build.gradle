@@ -64,7 +64,8 @@ dependencies {
 	implementation("net.fabricmc:fabric-loader:${loader_version}")
 
 	implementation("net.fabricmc.fabric-api:fabric-api:${fabric_api_version}")
-	implementation("com.github.glitchfiend:TerraBlender-fabric:${terrablender_version}")
+	//implementation("com.github.glitchfiend:TerraBlender-fabric:${terrablender_version}")
+	implementation("com.terraformersmc:biolith-fabric:${project.biolith_version}")
 
 	localRuntime("com.terraformersmc:modmenu:${mod_menu_version}")
 }

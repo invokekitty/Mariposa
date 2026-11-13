@@ -1,6 +1,7 @@
 package dev.doctor4t.mariposa.common.world.level.levelgen;
 
 import dev.doctor4t.mariposa.common.init.MariposaBiomes;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Noises;

@@ -1,15 +1,13 @@
 package dev.doctor4t.mariposa.common;
 
-import dev.doctor4t.mariposa.common.init.MariposaBlocks;
-import dev.doctor4t.mariposa.common.init.MariposaEntityTypes;
-import dev.doctor4t.mariposa.common.init.MariposaFeatureConfigurations;
-import dev.doctor4t.mariposa.common.init.MariposaItems;
-import dev.doctor4t.mariposa.common.world.level.levelgen.MariposaRegion;
+import com.terraformersmc.biolith.api.biome.BiomePlacement;
+import com.terraformersmc.biolith.api.biome.sub.CriterionBuilder;
+import com.terraformersmc.biolith.api.surface.SurfaceGeneration;
+import dev.doctor4t.mariposa.common.init.*;
 import dev.doctor4t.mariposa.common.world.level.levelgen.MariposaSurfaceRuleData;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.resources.Identifier;
-import terrablender.api.Regions;
-import terrablender.api.SurfaceRuleManager;
+import net.minecraft.world.level.biome.Biomes;
 
 public class Mariposa implements ModInitializer {
 	public static final String MOD_ID = "mariposa";
@@ -24,14 +22,12 @@ public class Mariposa implements ModInitializer {
 		MariposaBlocks.initialize();
 		MariposaEntityTypes.initialize();
 		MariposaFeatureConfigurations.initialize();
-		MariposaService.INSTANCE.initTerraBlender();
+		setupWorldgen();
 	}
 
-	public static void initTerraBlender() {
-		// Weights are kept intentionally low as we add minimal biomes
-		Regions.register(new MariposaRegion(id("overworld"), 4));
-
-		// Register our surface rules
-		SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, MariposaSurfaceRuleData.makeRules());
+	private static void setupWorldgen() {
+		BiomePlacement.replaceOverworld(Biomes.TAIGA, MariposaBiomes.REDWOOD_FOREST, 0.18);
+		BiomePlacement.addSubOverworld(Biomes.SNOWY_TAIGA, MariposaBiomes.SNOWY_REDWOOD_FOREST, CriterionBuilder.alternate(MariposaBiomes.REDWOOD_FOREST, Biomes.TAIGA));
+		SurfaceGeneration.addOverworldSurfaceRules(Identifier.fromNamespaceAndPath("mariposa", "rules"), MariposaSurfaceRuleData.makeRules());
 	}
 }
